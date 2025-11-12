@@ -21,10 +21,11 @@ const movies: Movie[] = JSON
  * * * * *  Add shows and movies to watchlist  * * * * *
  */
 const showWatchlist = shows
-    .map((serie) => ({
+    .filter((show) => show.status === "not_started_yet")
+    .map((show) => ({
         ids: {
-            tvdb: serie.id.tvdb,
-            imdb: serie.id.imdb === "-1" ? "" : serie.id.imdb,
+            tvdb: show.id.tvdb,
+            imdb: show.id.imdb === "-1" ? "" : show.id.imdb,
             slug: "",
             tmdb: -Infinity,
             trakt: -Infinity,
