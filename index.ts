@@ -32,6 +32,7 @@ const showWatchlist = shows
     }));
 
 const movieWatchlist = movies
+    .filter((movie) => !movie.is_watched)
     .map((movie) => ({
         watched_at: movie.watched_at,
         ids: {
