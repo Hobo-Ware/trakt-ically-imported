@@ -116,8 +116,17 @@ const showHistory = shows
             })),
     }));
 
-const movieHistory = movieWatchlist
-    .filter((movie) => movie.watched_at != null);
+const movieHistory = movies
+    .filter((movie) => movie.is_watched)
+    .map((movie) => ({
+        watched_at: movie.watched_at,
+        ids: {
+            imdb: movie.id.imdb,
+            slug: "",
+            tmdb: -Infinity,
+            trakt: -Infinity,
+        },
+    }));
 
 const episodeCount = showHistory.reduce(
     (accShow, show) =>
